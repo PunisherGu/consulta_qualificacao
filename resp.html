@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>\n
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n<html
+    lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:menu="http://previdencia.org.br/menu">
+
+<head>\n\t
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />\n\t\n\t<title>Consulta
+        Qualifica\xc3\xa7\xc3\xa3o Cadastral\xc2\xa0-\xc2\xa0Consulta Qualifica\xc3\xa7\xc3\xa3o cadastral\n\t</title>
+    \n\t\n\t
+    <link href="/Esocial/css/1estilos.css" rel="stylesheet" type="text/css" />\n\t
+    <link href="/Esocial/css/2menu.css" rel="stylesheet" type="text/css" />\n\t
+    <link href="/Esocial/css/3formularios.css" rel="stylesheet" type="text/css" />\n\t
+    <link href="/Esocial/css/4tabelas.css" rel="stylesheet" type="text/css" />\n\t
+    <link href="/Esocial/css/5estilos.ajax.css" rel="stylesheet" type="text/css" />\n\t\n\t
+    <link href="/Esocial/css/com.jquery.ui.custom.css" rel="stylesheet" type="text/css" />\n\t
+    <link href="/Esocial/css/com.jquery.ui.dataprev.css" rel="stylesheet" type="text/css" />\n\t\n\t
+    <link href="/Esocial/css/impressao.css" rel="stylesheet" type="text/css" media="print" />\n\n\n\n\t
+    <!-- [if IE 6]\n\t&lt;link href="/Esocial/css/estilosIE.css" rel="stylesheet" type="text/css" /&gt;\n\t&lt;! [endif] -->\n\t<noscript>\n\t\t
+        <div class="mensagem">\n\t <p class="erro">Essa aplica\xc3\xa7\xc3\xa3o usa recursos de Scripts Ativos. Habilite
+                os Scripts Ativos (Javascript...) no seu Browser!!</p>\n\t </div>\n\t</noscript> \n\t\n\t
+    <!-- Favicon: Browser  -->\n\t
+    <link rel="shortcut icon"
+        href="http://portal.dataprev.gov.br/wp-content/themes/sitedataprev/library/media/images/favicon.ico" />
+</head>
+
+<body>\n
+    <!-- Scripts -->\n\n\n\t<script type="text/javascript" src="/Esocial/js/com.jquery.js"></script>\n\t<script
+        type="text/javascript" src="/Esocial/js/com.jquery.maskedinput.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.maskMoney.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.maskPercent.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.validation.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.limit.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.ui.datepicker.ptBR.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/br.gov.dataprev.jquery.maskedinput.patterns.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/br.gov.dataprev.jquery.functions.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/com.jquery.ui.customdataprev.min.js"></script>\n\t<script type="text/javascript"
+        src="/Esocial/js/jquery.blockUI.js"></script>\n\t\n\t\n\t<script type="text/javascript"
+        src="/Esocial/js/br.gov.dataprev.jquery.hacks.js"></script>\n\t\t<div class="envelope">\n
+        <!-- \t\t\t&lt;ui:insert name="topoInternet"&gt;\n\t\t\t\t&lt;ui:include src="topoInternet.xhtml" /&gt;\n\t\t\t&lt;/ui:insert&gt;\n -->\n\n\t
+        <div id="header" class="navbar navbar-inverse navbar-static-top">\n <div class="navbar-inner">\n <a
+                    id="ctl00_hplMarca" class="hide-text marca" href="http://esocial.gov.br/Default.aspx"></a>\n </div>
+            \n\t\t<div id="titulo-modulo">\n </div>\n <br /><br />\n </div>\n\n
+        <!-- \t\t\t&lt;ui:insert name="menu"&gt;\n\t    \t\t&lt;ui:include src="menu.xhtml" /&gt;\n\t\t\t&lt;/ui:insert&gt;\n -->\n\t\t\t
+        <h2>\n\t\t\t\t<a name="conteudo">Consulta Qualifica\xc3\xa7\xc3\xa3o cadastral\n\t\t\t\t</a>\n\t\t\t</h2>
+        \n\t\t\t\t<p class="aviso">Os campos precedidos com asterisco(*) s\xc3\xa3o\n\t\t\t\t\tde preenchimento
+            obrigat\xc3\xb3rio.</p>\n\n\t\t\t\t
+        <!-- &lt;p class="aviso"&gt;N&amp;#227;o utilizar caracteres especiais.&lt;/p&gt; -->\n\t\t\t<div class="mensagem">
+            <ul>
+                <li class="erro">captcha: A resposta asdasd n\xc3\xa3o corresponde ao desafio gerado.</li>
+            </ul>\n\t\t\t
+        </div>\n\n\t\t\t<div id="ajaxdiv">\n\t\t\t\t<img id="dtpajaxloader" src="/Esocial/images/wait.gif"
+                style="display: none;" class="dtpajaxloaderclass" />\n\t\t\t</div>\n<form id="formQualificacaoCadastral"
+            name="formQualificacaoCadastral" method="post" action="/Esocial/pages/qualificacao/qualificar.xhtml"
+            enctype="application/x-www-form-urlencoded">\n<input type="hidden" name="formQualificacaoCadastral"
+                value="formQualificacaoCadastral" />\n<input type="hidden" name="DTPINFRA_TOKEN"
+                value="1590731802428" />\n\t\t \n\t\t
+            <!-- Tela inicial -->\n\t\t\t<fieldset>\n\t\t\t\t<legend>Consultar qualifica\xc3\xa7\xc3\xa3o de dados
+                    cadastrais</legend>\n\t\t\t\t<div class="linhaTipoA">\n\t\t\t\t\t<label class="principal"
+                        for="form:nome">\n\t\t\t\t\t\t<span class="label obrigatorio tamanho40"> * Nome:</span><input
+                            id="formQualificacaoCadastral:nome" type="text" name="formQualificacaoCadastral:nome"
+                            class="tamanho50 required" maxlength="70" onblur="value=value.toUpperCase()" />
+                        \n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<div class="linhaTipoA">
+                    \n\t\t\t\t\t<label class="principal" for="form:data">\n\t\t\t\t\t\t<span
+                            class="label obrigatorio tamanho40"> * Data de Nascimento:</span><input
+                            id="formQualificacaoCadastral:dataNascimento" type="text"
+                            name="formQualificacaoCadastral:dataNascimento"
+                            class="tamanho10 dataTextualFormat required" /> \n\t\t\t\t\t\tDD/MM/AAAA
+                        \n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t<div class="linhaTipoA">
+                    \n\t\t\t\t\t<label class="principal" for="form:cpf">\n\t\t\t\t\t\t<span
+                            class="label obrigatorio tamanho40"> * CPF:</span><input id="formQualificacaoCadastral:cpf"
+                            type="text" name="formQualificacaoCadastral:cpf" class="tamanho15 cpfFormat required" />
+                        \n\t\t\t\t\t\t \n\t\t\t\t\t</label>\n\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t<div class="linhaTipoA">
+                    \n\t\t\t\t\t<label class="principal" for="form:nis">\n\t\t\t\t\t\t<span
+                            class="label obrigatorio tamanho40"> * NIS (NIT/PIS/PASEP):</span><input
+                            id="formQualificacaoCadastral:nis" type="text" name="formQualificacaoCadastral:nis"
+                            class="tamanho15 nitFormat required" /> \n\t\t\t\t\t</label>\n\t\t\t\t</div>
+                \n\t\t\t\t\n\t\t\t\t<div class="boxBotoes"><input id="formQualificacaoCadastral:btAdicionar"
+                        type="submit" name="formQualificacaoCadastral:btAdicionar" value="Adicionar"
+                        class="botaoSecundario" />\t\t\t\n\t\t\t\t</div>\n\t\t\t</fieldset><input type="hidden"
+                name="javax.faces.ViewState" id="javax.faces.ViewState" value="-876023737345349196:5641237456590314949"
+                autocomplete="off" />\n</form>\t\n\t\t\t\n\t\t\t
+        <!-- Grade de trabalhadores -->\n<table id="gridDadosTrabalhador"
+            summary="Situa\xc3\xa7\xc3\xb5es para sele\xc3\xa7\xc3\xa3o">\n<thead>\n<tr>
+                    <th class="cabecalhoPrincipal">Nome</th>
+                    <th class="cabecalhoPrincipal">Data de Nascimento</th>
+                    <th id="cpf" class="cabecalhoPrincipal">CPF</th>
+                    <th class="cabecalhoPrincipal">NIS</th>
+                    <th class="cabecalhoPrincipal"></th>
+                </tr>
+            </thead>\n<tbody id="gridDadosTrabalhado:tbody_element">\n<tr class="even left">
+                    <td class="left">GUSTAVO ANDRE SANTOS NOGUEIRA</td>
+                    <td class="center">16/08/1994</td>
+                    <td class="center">121.354.046-16</td>
+                    <td class="center">2.018.430.252-2</td>
+                    <td class="center">\n<form id="gridDadosTrabalhador:0:j_idt42" name="gridDadosTrabalhador:0:j_idt42"
+                            method="post" action="/Esocial/pages/qualificacao/qualificar.xhtml"
+                            enctype="application/x-www-form-urlencoded">\n<input type="hidden"
+                                name="gridDadosTrabalhador:0:j_idt42" value="gridDadosTrabalhador:0:j_idt42" />\n<input
+                                type="hidden" name="DTPINFRA_TOKEN" value="1590731802428" /><input type="submit"
+                                name="gridDadosTrabalhador:0:j_idt42:j_idt43" value="Excluir" /><input type="hidden"
+                                name="javax.faces.ViewState" id="javax.faces.ViewState"
+                                value="-876023737345349196:5641237456590314949" autocomplete="off" />\n</form>
+                    </td>
+                </tr>\n</tbody>
+        </table>\n\n \t\t\n\t\t\t
+        <!-- Painel com o captcha e o bot&atilde;o de qualificar -->\n<form id="formValidacao" name="formValidacao"
+            method="post" action="/Esocial/pages/qualificacao/qualificar.xhtml"
+            enctype="application/x-www-form-urlencoded">\n<input type="hidden" name="formValidacao"
+                value="formValidacao" />\n<input type="hidden" name="DTPINFRA_TOKEN" value="1590731802428" />\t
+            \n\n\t\t\t\t\t<fieldset>\n\t\t\t\t\t\t<legend>Informe os caracteres que aparecem na imagem abaixo</legend>
+                \n\t\t\t\t\t\t\n\t\t\t\t\t\t<div class="linhaTipoB">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t<label
+                        class="principal tamanho60" for="form:captchaId"> \n\t\t\t\t\t\t\t<span
+                            class="label obrigatorio tamanho80">* C\xc3\xb3digo da figura\n\t\t\t\t\t\t\t\t\tou
+                            d\xc3\xadgitos sonoros reproduzidos com os bot\xc3\xb5es ao
+                            lado:</span>\n\t\t\t\t\t\t\t</label>
+                    <script type="text/javascript" src="/Esocial/captcha-load/" charset="UTF-8"></script>
+                    <div id="componente"></div>
+                    <script type="text/javascript">
+                        document.getElementById("componente").insertAdjacentHTML("afterend", teste);
+                        Captcha.reload("captcha_challenge");
+                    </script><noscript>Por favor habilite o JavaScript do seu navegador para que o servi\xc3\xa7o de
+                        captcha funcione corretamente.</noscript>\n\t\t\t\t\t\t\t\n\t\t\t\t \t\t<noscript>\n\t\t\t\t
+                        \t\tPor favor habilite o JavaScript do seu navegador\n\t\t\t\t \t\tpara que o servi\xc3\xa7o de
+                        captcha funcione corretamente.\n\t\t\t\t \t\t</noscript>\n\t\t\t\t\t
+                </div>\n\t\t\t\t\t\t\n\t\t\t\t\t\t<br />\n\t\t\t\t\t</fieldset>\n\t\t\t\t \t \n\t\t\t\t
+            <!-- Botoes de opcoes -->\n\t\t\t\t <div class="boxBotoes"><input id="formValidacao:botaoValidar"
+                    type="submit" name="formValidacao:botaoValidar" value="Consultar"
+                    class="botaoPrincipal default" />\n\t\t\t\t </div><input type="hidden" name="javax.faces.ViewState"
+                id="javax.faces.ViewState" value="-876023737345349196:5641237456590314949" autocomplete="off" />\n
+        </form>\n\t \n\t\t
+        <!-- Painel com o bot&atilde;o de qualificar -->\n<form id="formValidacao2" name="formValidacao2" method="post"
+            action="/Esocial/pages/qualificacao/qualificar.xhtml" enctype="application/x-www-form-urlencoded">\n<input
+                type="hidden" name="formValidacao2" value="formValidacao2" />\n<input type="hidden"
+                name="DTPINFRA_TOKEN" value="1590731802428" />\n\t\t\t<div class="linhaTipoA">\t \n\t\t\t
+                <!-- Botoes de opcoes -->\n\t\t\t <div class="boxBotoes">\n\t\t\t </div>\n\t \t\t</div><input
+                type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState"
+                value="-876023737345349196:5641237456590314949" autocomplete="off" />\n</form>\n\n\t\t\t<div
+            class="fixadora"></div>\n\n\t\t</div>\n\n\t<div>\n\t\t<div
+            style="border-top:3px solid #a2b3c3;height:38px;padding-top:3px; text-align:center; vertical-align: middle;">
+            \n\t\t\t<a href="http://www.caixa.gov.br/fgts" target="_blank" style="text-decoration: none;">
+                \n\t\t\t\t<img style="width: 69px; height: 38px;"
+                    src="/Esocial/images/logo-rodape-caixa.png" />\n\t\t\t</a>\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t\n <a href="http://www.fgts.gov.br" target="_blank"
+                style="text-decoration: none;">\n \t<img style="width:75px; height:38px;"
+                    src="/Esocial/images/logo-rodape-fgts.gif" />\n \t</a> \n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\n \t\t\t\t\n \t\t\t\t<a href="http://www.mte.gov.br"
+                target="_blank" style="text-decoration: none;">\n \t\t<img style="width:113px; height:38px;"
+                    src="/Esocial/images/logo-rodape-mte.png" />\n \t</a> \n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\n\t \t\t\t\t\t\t\t \n \t\t<a href="http://www.inss.gov.br"
+                target="_blank" style="text-decoration: none;">\n \t\t<img style="width:171px; height:38px;"
+                    src="/Esocial/images/logo-rodape-previdencia.png" />\n \t</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\t\t\t\t\n\t\t\t<a
+                style="text-decoration: none;">\xc2\xa0</a>\n\n \t\n <a href="http://www.receita.fazenda.gov.br"
+                target="_blank" style="text-decoration: none;">\n \t<img style="width:104px; height:38px;"
+                    src="/Esocial/images/logo-rodape-receita.png" />\n \t</a>\n\t\t</div>\n\t\t<br />\n\t\t\n\t\t<div
+            class="textoRodape esquerda">Desenvolvido pela Dataprev</div>\n\t\t<div class="textoRodape centro">
+            \n\t\t\t<a title="pular para o in\xc3\xadcio da p\xc3\xa1gina - Control Shift 1" href="#inicio" tabindex="2"
+                accesskey="1"> Saltar para o In\xc3\xadcio [1] </a> \n\t\t <a
+                title="pular para o menu - Control Shift 2" href="#menu" tabindex="3" accesskey="2"> Saltar para o Menu
+                [2] </a><br />\n\t\t\t<a title="pular para o conte\xc3\xbado da p\xc3\xa1gina - Control Shift 3"
+                href="#conteudo" tabindex="4" accesskey="3"> Saltar para o conte\xc3\xbado [3] </a>\n\t\t</div>\n\t\t
+        <div class="textoRodape direita">Vers\xc3\xa3o 2.6\n\t\t</div>\n\t</div>
+</body>\n
+
+</html>

@@ -2,7 +2,7 @@ import re
 from io import BytesIO
 import pytesseract
 
-from PIL import Image
+from PIL import Image, ImageOps
 from requests import Session
 from lxml import html
 
@@ -19,9 +19,14 @@ def get_captcha(s):
 
 
 def solve_captcha(img):
-    black_and_white = img.convert("L") #converting to black and white 
+    black_and_white = img.convert("L") #converting to grayscale
     black_and_white.save("black_and_white.png")
     text = pytesseract.image_to_string(Image.open('black_and_white.png'))
+    
+    #auto_contrast
+    im2 = ImageOps.autocontrast(black_and_white, cutoff = 2, ignore = 2) 
+    im2.save('auto.jpg')
+    text = pytesseract.image_to_string(Image.open('auto.jpg'))
     return text
 
 
