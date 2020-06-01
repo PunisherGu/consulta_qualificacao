@@ -62,7 +62,13 @@ img = Image.open(BytesIO(response.content))
 img.save("captcha.jpg")
 captcha_resp = input("Captcha:")
 
-#quebrar o captcha aqui
+#quebrar captcha aqui
+
+black_and_white = img.convert("L") #converting to black and white 
+black_and_white.save("black_and_white.png")
+number = pytesseract.image_to_string(Image.open('black_and_white.png'))
+print(number)
+# captcha_resp = number
 
 
 data = {
