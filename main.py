@@ -1,16 +1,18 @@
-import os
+import json
+import re
+from io import BytesIO
 
-import cv2
-import numpy
 import pytesseract
 from lxml import html
-from PIL import Image, ImageEnhance, ImageOps, ImageFilter
+from PIL import Image
+from random_user_agent.params import OperatingSystem, SoftwareName
+from random_user_agent.user_agent import UserAgent
 from requests import Session
-from captcha.image import ImageCaptcha
-from scipy.ndimage.filters import gaussian_filter
 
 s = Session()
-
+software_names = [SoftwareName.CHROME.value]
+operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]
+user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=100)
 page = s.get("http://consultacadastral.inss.gov.br/Esocial/pages/index.xhtml")
 tree = html.fromstring(page.content)
 inputs = tree.xpath('//input[@type="hidden"]/@value')
@@ -21,43 +23,58 @@ data = '16/08/1994'
 name = 'GUSTAVO ANDRE SANTOS NOGUEIRA'
 nis = '201.84302.52-2'
 
-
 header = {
     'Upgrade-Insecure-Requests':'1',
     'Origin':'http://consultacadastral.inss.gov.br',
     'Content-Type':'application/x-www-form-urlencoded',
-    'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+    'User-Agent': user_agent_rotator.get_random_user_agent(),
     'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
 }
 data = {
     'DTPINFRA_TOKEN':token,
     'formQualificacaoCadastral':'formQualificacaoCadastral',
-    'formQualificacaoCadastral':'btAdicionar:Adicionar',
+    'formQualificacaoCadastral:btAdicionar':'Adicionar',
     'formQualificacaoCadastral:cpf':cpf,
     'formQualificacaoCadastral:dataNascimento':data,
     'formQualificacaoCadastral:nis':nis,
     'formQualificacaoCadastral:nome':name,
     'javax.faces.ViewState': view,
 }
-resp = s.post('http://consultacadastral.inss.gov.br/Esocial/pages/qualificacao/qualificar.xhtml', data=data, headers=header)
-img = Image.open('imagem.jpeg')
+page = s.post('http://consultacadastral.inss.gov.br/Esocial/pages/qualificacao/qualificar.xhtml', data=data, headers=header)
+tree = html.fromstring(page.content)
+name = tree.get_element_by_id("formQualificacaoCadastral:nome")
+view = tree.xpath('//input[@type="hidden"]/@value')[2]
 
-th1 = 100
-th2 = 200 # threshold after blurring
-sig = 0.5 # the blurring sigma
-original = Image.open("imagem.jpeg")
-original.save("original.png") # reading the image from the request
-black_and_white =original.convert("L") #converting to black and white
-black_and_white.save("black_and_white.png")
-first_threshold = black_and_white.point(lambda p: p > th1 and 255)
-first_threshold.save("first_threshold.png")
-blur=numpy.array(first_threshold) #create an image array
-blurred = gaussian_filter(blur, sigma=sig)
-blurred = Image.fromarray(blurred)
-blurred.save("blurred.png")
-final = blurred.point(lambda p: p > th2 and 255)
-final = final.filter(ImageFilter.EDGE_ENHANCE_MORE)
-final = final.filter(ImageFilter.SHARPEN)
-final.save("final.png")
-number = pytesseract.image_to_string(Image.open('final.png'))
-print(number)
+data = {
+    'DTPINFRA_TOKEN':token,
+    'formValidacao2':'formValidacao2',
+    'formValidacao2:botaoValidar2':'Consultar',
+    'javax.faces.ViewState': view,
+
+}
+page = s.post("http://consultacadastral.inss.gov.br/Esocial/pages/qualificacao/qualificar.xhtml", data=data, headers=header)
+page = s.get("http://consultacadastral.inss.gov.br/Esocial/captcha-load/")
+
+captcha = f"I_{re.findall('(?<=I_)(.*?)(?=_interne)', page.content.decode('ISO-8859-1'))[0]}_internet"
+
+response = s.get(f'http://consultacadastral.inss.gov.br/Esocial/api/imagem?d={captcha}')
+img = Image.open(BytesIO(response.content))
+img.save("captcha.jpg")
+captcha_resp = input("Captcha:")
+
+#quebrar o captcha aqui
+
+
+data = {
+    'DTPINFRA_TOKEN':token,
+    'captcha_campo_desafio':captcha,
+    'captcha_campo_resposta':captcha_resp,
+    'formValidacao':'formValidacao',
+    'formValidacao:botaoValidar':'Consultar',
+    'javax.faces.ViewState':view,
+}
+page = s.post('http://consultacadastral.inss.gov.br/Esocial/pages/qualificacao/qualificar.xhtml', data=data, headers=header)
+tree = html.fromstring(page.content)
+xpath_data = tree.xpath('//tbody/tr/td/span/text()')
+data = dict(nome=xpath_data[0], data_nasimento=xpath_data[1], cpf=xpath_data[2], nis=xpath_data[3], status=xpath_data[4], detail=xpath_data[5])
+print(json.dumps(data, indent = 4))
