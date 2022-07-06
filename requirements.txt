@@ -3,7 +3,7 @@ captcha-solver==0.1.5
 certifi==2020.4.5.1
 chardet==3.0.4
 idna==2.9
-lxml==4.5.1
+lxml==4.9.1
 numpy==1.16.6
 opencv-python==4.2.0.32
 Pillow==6.2.2
